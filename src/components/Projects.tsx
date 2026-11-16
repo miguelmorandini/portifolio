@@ -96,9 +96,28 @@ export function Projects({ lang }: ProjectsProps) {
                     </div>
                   </div>
 
-                  <h3 className="mt-4 text-xl font-bold text-white transition group-hover:text-emerald-300">
-                    {project.title}
-                  </h3>
+                  <div className="mt-4 flex items-center gap-3.5">
+                    {project.logo && (
+                      <div
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${
+                          project.logoStyle === 'raw'
+                            ? 'overflow-hidden border border-zinc-800/80'
+                            : project.logoStyle === 'light'
+                              ? 'bg-white p-1.5 shadow-sm'
+                              : 'border border-zinc-800 bg-zinc-950/80 p-1.5'
+                        }`}
+                      >
+                        <img
+                          src={project.logo}
+                          alt={project.title}
+                          className={`h-full w-full ${project.logoStyle === 'raw' ? 'object-cover' : 'object-contain'}`}
+                        />
+                      </div>
+                    )}
+                    <h3 className="text-xl font-bold text-white transition group-hover:text-emerald-300">
+                      {project.title}
+                    </h3>
+                  </div>
 
                   <p className="mt-2.5 text-sm leading-relaxed text-zinc-300">
                     {project.description[lang]}

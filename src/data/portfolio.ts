@@ -1,6 +1,10 @@
 import fatecLogo from '../assets/logos/fatec-white.png';
 import programmersLogo from '../assets/logos/programmers.png';
 import spsLogo from '../assets/logos/sps.png';
+import cidadeIntegraLogo from '../assets/logos/cidade-integra.png';
+import bytewordLogo from '../assets/logos/byteword.png';
+import airpongLogo from '../assets/logos/airpong.png';
+import ifspLogo from '../assets/logos/ifsp.png';
 
 export type Lang = 'pt' | 'en';
 
@@ -35,6 +39,7 @@ export interface EducationItem {
   id: string;
   institution: string;
   logo?: string;
+  logoStyle?: 'light' | 'dark';
   degree: LocalizedText;
   period: LocalizedText;
   status: LocalizedText;
@@ -54,6 +59,8 @@ export type ProjectCategory = 'all' | 'data' | 'ai' | 'fullstack';
 export interface ProjectItem {
   id: string;
   title: string;
+  logo?: string;
+  logoStyle?: 'light' | 'dark' | 'raw';
   subtitle: LocalizedText;
   category: Exclude<ProjectCategory, 'all'>;
   featured?: boolean;
@@ -301,6 +308,7 @@ export const education: EducationItem[] = [
     id: 'fatec',
     institution: 'Fatec Matão — Faculdade de Tecnologia de São Paulo',
     logo: fatecLogo,
+    logoStyle: 'dark',
     degree: {
       pt: 'Tecnólogo em Desenvolvimento de Software Multiplataforma',
       en: 'Associate Degree in Multiplatform Software Development',
@@ -318,6 +326,8 @@ export const education: EducationItem[] = [
   {
     id: 'ifsp',
     institution: 'Instituto Federal de Educação, Ciência e Tecnologia de São Paulo — IFSP',
+    logo: ifspLogo,
+    logoStyle: 'light',
     degree: {
       pt: 'Curso Técnico em Alimentos Integrado ao Ensino Médio',
       en: 'Technical Course in Food Science Integrated with High School',
@@ -361,6 +371,8 @@ export const projects: ProjectItem[] = [
   {
     id: 'cidade-integra',
     title: 'Cidade Integra',
+    logo: cidadeIntegraLogo,
+    logoStyle: 'dark',
     subtitle: {
       pt: 'Plataforma Cívica de Zeladoria Urbana • Fatec Matão',
       en: 'Civic Urban Reporting Platform • Fatec Matão',
@@ -409,6 +421,8 @@ export const projects: ProjectItem[] = [
   {
     id: 'byteword-dbt',
     title: 'ByteWord — Tech Game & dbt Analytics Pipeline',
+    logo: bytewordLogo,
+    logoStyle: 'raw',
     subtitle: {
       pt: 'Jogo Interativo + Pipeline Analítico Modern Data Stack',
       en: 'Interactive Game + Modern Data Stack Pipeline',
@@ -449,6 +463,8 @@ export const projects: ProjectItem[] = [
   {
     id: 'airpong-cv',
     title: 'AirPong — Computer Vision Game',
+    logo: airpongLogo,
+    logoStyle: 'dark',
     subtitle: {
       pt: 'Controle por Gestos em Tempo Real via Webcam',
       en: 'Real-Time Hand-Tracking Pong Game',

@@ -35,7 +35,7 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="flex items-start gap-3.5">
                       {edu.logo && (
-                        <div className="flex h-12 w-16 shrink-0 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950/80 px-2.5 py-2">
+                        <div className={`flex h-12 w-16 shrink-0 items-center justify-center rounded-xl ${edu.logoStyle === 'light' ? 'bg-white p-1.5 shadow-sm' : 'border border-zinc-800 bg-zinc-950/80 px-2.5 py-2'}`}>
                           <img src={edu.logo} alt={edu.institution} className="h-full w-full object-contain" />
                         </div>
                       )}
