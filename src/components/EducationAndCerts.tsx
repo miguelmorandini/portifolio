@@ -33,11 +33,18 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
                   className="rounded-2xl border border-zinc-800/90 bg-[#0a120f] p-6 transition hover:border-emerald-500/35"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-2">
+                    <div className="flex items-start gap-3.5">
+                      {edu.logo && (
+                        <div className="flex h-12 w-16 shrink-0 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950/80 px-2.5 py-2">
+                          <img src={edu.logo} alt={edu.institution} className="h-full w-full object-contain" />
+                        </div>
+                      )}
                     <div>
                       <h4 className="text-base font-bold text-white">{edu.institution}</h4>
                       <p className="mt-1 text-sm font-medium text-emerald-300">
                         {edu.degree[lang]}
                       </p>
+                    </div>
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 font-mono text-[11px] text-zinc-300">
                       <Calendar className="h-3 w-3 text-emerald-400" />

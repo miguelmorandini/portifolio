@@ -31,6 +31,24 @@ export function Experience({ lang }: ExperienceProps) {
 
               <div className="rounded-2xl border border-zinc-800/90 bg-[#0a120f] p-6 transition hover:border-emerald-500/35">
                 <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div className="flex items-start gap-3.5">
+                    {exp.logo && (
+                      <div
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${
+                          exp.logoStyle === 'light'
+                            ? 'bg-white p-1.5 shadow-sm'
+                            : exp.logoStyle === 'raw'
+                              ? 'overflow-hidden border border-zinc-800/80'
+                              : 'border border-zinc-800 bg-zinc-950/80 p-1.5'
+                        }`}
+                      >
+                        <img
+                          src={exp.logo}
+                          alt={exp.company}
+                          className={`h-full w-full ${exp.logoStyle === 'raw' ? 'object-cover' : 'object-contain'}`}
+                        />
+                      </div>
+                    )}
                   <div>
                     <div className="flex flex-wrap items-center gap-2.5">
                       <h3 className="text-lg font-bold text-white">{exp.role[lang]}</h3>
@@ -63,6 +81,7 @@ export function Experience({ lang }: ExperienceProps) {
                     </div>
                   </div>
 
+                  </div>
                   <div className="flex flex-col items-start gap-1 text-xs text-zinc-400 sm:items-end">
                     <span className="inline-flex items-center gap-1.5 font-mono text-zinc-300">
                       <Calendar className="h-3.5 w-3.5 text-emerald-400" />
