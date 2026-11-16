@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Globe, Menu, X } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 import { Lang, uiLabels } from '../data/portfolio';
 
 interface NavbarProps {
@@ -19,8 +20,8 @@ export function Navbar({ lang, onToggleLang }: NavbarProps) {
           href="#top"
           className="group flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-zinc-100"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-md border border-emerald-500/40 bg-emerald-500/10 text-xs text-emerald-400 transition group-hover:border-emerald-400 group-hover:bg-emerald-500/20">
-            MM
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-500/25 bg-emerald-500/5 p-1 transition group-hover:border-emerald-400/60 group-hover:bg-emerald-500/15">
+            <img src={logoImg} alt="Miguel Morandini" className="h-full w-full object-contain" />
           </span>
           <span>
             miguel<span className="text-emerald-400">.morandini</span>

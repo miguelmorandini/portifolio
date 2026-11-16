@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Check, Copy, Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 import { Lang, profile, uiLabels } from '../data/portfolio';
 
 interface ContactFooterProps {
@@ -76,7 +77,10 @@ export function ContactFooter({ lang }: ContactFooterProps) {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-zinc-900 pt-8 text-xs text-zinc-500 sm:flex-row">
-          <p>{uiLabels.misc.footerNote[lang]}</p>
+          <div className="flex items-center gap-2.5">
+            <img src={logoImg} alt="Miguel Morandini" className="h-5 w-5 object-contain opacity-90" />
+            <p>{uiLabels.misc.footerNote[lang]}</p>
+          </div>
           <p className="flex items-center gap-1.5 font-mono">
             <MapPin className="h-3.5 w-3.5 text-emerald-500" />
             {profile.location}
