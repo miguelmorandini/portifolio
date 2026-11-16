@@ -1,11 +1,35 @@
-import { Award, Calendar, GraduationCap } from 'lucide-react';
-import { certifications, education, Lang, uiLabels } from '../data/portfolio';
+import { useState } from 'react';
+import { Award, Calendar, ChevronDown, ChevronUp, ExternalLink, GraduationCap } from 'lucide-react';
+import {
+  CertificationItem,
+  certifications,
+  education,
+  Lang,
+  profile,
+  uiLabels,
+} from '../data/portfolio';
 
 interface EducationAndCertsProps {
   lang: Lang;
 }
 
+function formatCredentialPeriod(cert: CertificationItem, lang: Lang): string | null {
+  if (!cert.issuedAt) return null;
+  const issued = `${uiLabels.misc.issuedLabel[lang]} ${cert.issuedAt[lang]}`;
+  if (!cert.expiresAt) return issued;
+  return `${issued} • ${uiLabels.misc.validUntilLabel[lang]} ${cert.expiresAt[lang]}`;
+}
+
 export function EducationAndCerts({ lang }: EducationAndCertsProps) {
+  const [showAllBadges, setShowAllBadges] = useState(false);
+
+  const primaryCerts = certifications.filter(
+    (cert) => cert.tier === 'certification' || cert.tier === 'accreditation',
+  );
+  const knowledgeBadges = certifications.filter((cert) => cert.tier === 'knowledge');
+  const partnerBadges = certifications.filter((cert) => cert.tier === 'partner');
+  const secondaryCount = knowledgeBadges.length + partnerBadges.length;
+
   return (
     <section id="education" className="border-b border-zinc-900 bg-[#070c0a] py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -35,16 +59,26 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div className="flex items-start gap-3.5">
                       {edu.logo && (
-                        <div className={`flex h-12 w-16 shrink-0 items-center justify-center rounded-xl ${edu.logoStyle === 'light' ? 'bg-white p-1.5 shadow-sm' : 'border border-zinc-800 bg-zinc-950/80 px-2.5 py-2'}`}>
-                          <img src={edu.logo} alt={edu.institution} className="h-full w-full object-contain" />
+                        <div
+                          className={`flex h-12 w-16 shrink-0 items-center justify-center rounded-xl ${
+                            edu.logoStyle === 'light'
+                              ? 'bg-white p-1.5 shadow-sm'
+                              : 'border border-zinc-800 bg-zinc-950/80 px-2.5 py-2'
+                          }`}
+                        >
+                          <img
+                            src={edu.logo}
+                            alt={edu.institution}
+                            className="h-full w-full object-contain"
+                          />
                         </div>
                       )}
-                    <div>
-                      <h4 className="text-base font-bold text-white">{edu.institution}</h4>
-                      <p className="mt-1 text-sm font-medium text-emerald-300">
-                        {edu.degree[lang]}
-                      </p>
-                    </div>
+                      <div>
+                        <h4 className="text-base font-bold text-white">{edu.institution}</h4>
+                        <p className="mt-1 text-sm font-medium text-emerald-300">
+                          {edu.degree[lang]}
+                        </p>
+                      </div>
                     </div>
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900 px-3 py-1 font-mono text-[11px] text-zinc-300">
                       <Calendar className="h-3 w-3 text-emerald-400" />
@@ -73,31 +107,157 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
 
           {/* Courses & Certifications */}
           <div className="lg:col-span-5">
-            <h3 className="mb-4 flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-zinc-400">
-              <Award className="h-4 w-4 text-emerald-400" />
-              {uiLabels.misc.certsHeading[lang]}
-            </h3>
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+              <h3 className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                <Award className="h-4 w-4 text-emerald-400" />
+                {uiLabels.misc.certsHeading[lang]}
+              </h3>
+
+              <a
+                href={profile.databricksWalletUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-mono text-[11px] text-emerald-400 transition hover:text-emerald-300"
+              >
+                {uiLabels.misc.databricksWallet[lang]}
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            </div>
 
             <div className="space-y-3.5">
-              {certifications.map((cert) => (
-                <div
-                  key={cert.id}
-                  className="flex items-start gap-4 rounded-2xl border border-zinc-800/90 bg-[#0a120f] p-5 transition hover:border-emerald-500/35"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10 font-mono text-[10px] font-bold uppercase text-emerald-300">
-                    <Award className="h-5 w-5" />
+              {primaryCerts.map((cert) => {
+                const period = formatCredentialPeriod(cert, lang);
+                return (
+                  <div
+                    key={cert.id}
+                    className={`flex items-start gap-4 rounded-2xl border p-5 transition ${
+                      cert.featured
+                        ? 'border-emerald-500/45 bg-emerald-950/20 hover:border-emerald-400/70'
+                        : 'border-zinc-800/90 bg-[#0a120f] hover:border-emerald-500/35'
+                    }`}
+                  >
+                    <div
+                      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border font-mono text-[10px] font-bold uppercase ${
+                        cert.featured
+                          ? 'border-emerald-400/50 bg-emerald-500/20 text-emerald-200'
+                          : 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                      }`}
+                    >
+                      <Award className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="inline-block rounded bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
+                          {cert.badgeLabel}
+                        </span>
+                        {cert.credentialUrl && (
+                          <a
+                            href={cert.credentialUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-1 font-mono text-[11px] text-emerald-400 transition hover:text-emerald-300"
+                          >
+                            {uiLabels.misc.verifyCredential[lang]}
+                            <ExternalLink className="h-3 w-3" />
+                          </a>
+                        )}
+                      </div>
+                      <h4 className="mt-1.5 text-sm font-bold leading-snug text-white">
+                        {cert.title}
+                      </h4>
+                      <p className="mt-1 text-xs text-zinc-400">{cert.issuer}</p>
+                      {period && (
+                        <p className="mt-1.5 font-mono text-[11px] text-zinc-500">{period}</p>
+                      )}
+                    </div>
                   </div>
-                  <div className="min-w-0">
-                    <span className="inline-block rounded bg-emerald-500/10 px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-emerald-300">
-                      {cert.badgeLabel}
+                );
+              })}
+
+              {secondaryCount > 0 && (
+                <div className="rounded-2xl border border-zinc-800/90 bg-[#0a120f] p-4">
+                  <button
+                    type="button"
+                    onClick={() => setShowAllBadges((prev) => !prev)}
+                    aria-expanded={showAllBadges}
+                    className="flex w-full items-center justify-between gap-3 text-left"
+                  >
+                    <div>
+                      <p className="text-xs font-semibold text-white">
+                        {showAllBadges
+                          ? uiLabels.misc.hideBadges[lang]
+                          : `${uiLabels.misc.showBadges[lang]} (${secondaryCount})`}
+                      </p>
+                      <p className="mt-0.5 font-mono text-[11px] text-zinc-400">
+                        {knowledgeBadges.length} {uiLabels.misc.knowledgeBadgesLabel[lang]} •{' '}
+                        {partnerBadges.length} {uiLabels.misc.partnerBadgesLabel[lang]}
+                      </p>
+                    </div>
+                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-emerald-400">
+                      {showAllBadges ? (
+                        <ChevronUp className="h-4 w-4" />
+                      ) : (
+                        <ChevronDown className="h-4 w-4" />
+                      )}
                     </span>
-                    <h4 className="mt-1.5 text-sm font-bold leading-snug text-white">
-                      {cert.title}
-                    </h4>
-                    <p className="mt-1 text-xs text-zinc-400">{cert.issuer}</p>
-                  </div>
+                  </button>
+
+                  {showAllBadges && (
+                    <div className="mt-4 space-y-4 border-t border-zinc-800/80 pt-4">
+                      {[
+                        {
+                          label: `${uiLabels.misc.knowledgeBadgesLabel[lang]} (${knowledgeBadges.length})`,
+                          items: knowledgeBadges,
+                        },
+                        {
+                          label: `${uiLabels.misc.partnerBadgesLabel[lang]} (${partnerBadges.length})`,
+                          items: partnerBadges,
+                        },
+                      ].map((group) => (
+                        <div key={group.label}>
+                          <p className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-wider text-emerald-400">
+                            {group.label}
+                          </p>
+                          <div className="space-y-2">
+                            {group.items.map((badge) => {
+                              const period = formatCredentialPeriod(badge, lang);
+                              return (
+                                <div
+                                  key={badge.id}
+                                  className="flex items-start justify-between gap-3 rounded-xl border border-zinc-800/70 bg-zinc-950/60 px-3 py-2.5"
+                                >
+                                  <div className="min-w-0">
+                                    <p className="text-xs font-medium leading-snug text-zinc-200">
+                                      {badge.title}
+                                    </p>
+                                    {period && (
+                                      <p className="mt-0.5 font-mono text-[10px] text-zinc-500">
+                                        {period}
+                                      </p>
+                                    )}
+                                  </div>
+                                  {badge.credentialUrl && (
+                                    <a
+                                      href={badge.credentialUrl}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      aria-label={`${uiLabels.misc.verifyCredential[lang]} ${badge.title}`}
+                                      className="inline-flex shrink-0 items-center gap-1 pt-0.5 font-mono text-[10px] text-emerald-400 transition hover:text-emerald-300"
+                                    >
+                                      {uiLabels.misc.verifyCredential[lang]}
+                                      <ExternalLink className="h-3 w-3" />
+                                    </a>
+                                  )}
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
