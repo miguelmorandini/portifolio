@@ -5,6 +5,8 @@ import cidadeIntegraLogo from '../assets/logos/cidade-integra.png';
 import bytewordLogo from '../assets/logos/byteword.png';
 import airpongLogo from '../assets/logos/airpong.png';
 import ifspLogo from '../assets/logos/ifsp.png';
+import awsCloudBadge from '../assets/badges/aws-cloud-developing.png';
+import awsMlBadge from '../assets/badges/aws-ml-foundations.png';
 
 export type Lang = 'pt' | 'en';
 
@@ -53,6 +55,8 @@ export interface CertificationItem {
   category: 'data' | 'cloud' | 'ai';
   tier: 'certification' | 'accreditation' | 'knowledge' | 'partner';
   badgeLabel: string;
+  badgeImageUrl?: string;
+  certificateImageUrl?: string;
   issuedAt?: LocalizedText;
   expiresAt?: LocalizedText;
   credentialUrl?: string;
@@ -357,6 +361,8 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'certification',
     badgeLabel: 'Databricks Certified',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/200258154',
+    certificateImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/200258154',
     issuedAt: { pt: 'Nov 2026', en: 'Nov 2026' },
     expiresAt: { pt: 'Nov 2028', en: 'Nov 2028' },
     credentialUrl: 'https://credentials.databricks.com/dabe765e-8f07-4eda-8ac4-54021616e652',
@@ -369,24 +375,30 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'accreditation',
     badgeLabel: 'Databricks Accreditation',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/184373961',
+    certificateImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/184373961',
     issuedAt: { pt: 'Jun 2026', en: 'Jun 2026' },
     credentialUrl: 'https://credentials.databricks.com/0319ebe6-8233-4d7b-b4a7-b8124d2fdbb1',
   },
   {
     id: 'aws-cloud-developing',
-    title: 'AWS Academy: Cloud Developing',
-    issuer: 'AWS Academy Graduate',
+    title: 'AWS Academy Graduate - Cloud Developing',
+    issuer: 'AWS Academy • Training Badge',
     category: 'cloud',
     tier: 'accreditation',
     badgeLabel: 'AWS Cloud',
+    badgeImageUrl: awsCloudBadge,
+    credentialUrl: 'https://www.credly.com/badges/b2dc6e15-6520-46e5-aa07-6a7d58a581e0',
   },
   {
     id: 'aws-ml-foundations',
-    title: 'AWS Academy: Machine Learning Foundations',
-    issuer: 'AWS Academy Graduate',
+    title: 'AWS Academy Graduate - Machine Learning Foundations',
+    issuer: 'AWS Academy • Training Badge',
     category: 'ai',
     tier: 'accreditation',
     badgeLabel: 'AWS ML',
+    badgeImageUrl: awsMlBadge,
+    credentialUrl: 'https://www.credly.com/badges/dd90d770-ebb5-46e2-84d2-d2cd9dd95cb4',
   },
   {
     id: 'kb-lakeflow-connect',
@@ -395,6 +407,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'knowledge',
     badgeLabel: 'Knowledge Badge',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/197054297',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     credentialUrl: 'https://credentials.databricks.com/97026f8d-acc4-4ce5-a2b9-62af9a1da994',
   },
@@ -405,6 +418,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'knowledge',
     badgeLabel: 'Knowledge Badge',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/197057029',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     credentialUrl: 'https://credentials.databricks.com/865eed37-1d8b-466d-a4d3-9df7069c0870',
   },
@@ -415,6 +429,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'knowledge',
     badgeLabel: 'Knowledge Badge',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/197057512',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     credentialUrl: 'https://credentials.databricks.com/eec547e7-343d-4cbf-969b-ac964499e440',
   },
@@ -425,6 +440,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'knowledge',
     badgeLabel: 'Knowledge Badge',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/197059615',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     credentialUrl: 'https://credentials.databricks.com/3d3df6d6-5538-47bd-bbe7-a865fbee9288',
   },
@@ -435,6 +451,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/199388766',
     issuedAt: { pt: 'Nov 2026', en: 'Nov 2026' },
     expiresAt: { pt: 'Nov 2028', en: 'Nov 2028' },
     credentialUrl: 'https://credentials.databricks.com/99d2b695-4c5f-4e3d-b1f4-515154e7f029',
@@ -446,6 +463,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/199389326',
     issuedAt: { pt: 'Nov 2026', en: 'Nov 2026' },
     expiresAt: { pt: 'Nov 2028', en: 'Nov 2028' },
     credentialUrl: 'https://credentials.databricks.com/90da60ac-a43f-46f7-bc85-206e3146b3f0',
@@ -457,6 +475,7 @@ export const certifications: CertificationItem[] = [
     category: 'ai',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198721148',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/1bcd3b72-6334-42e0-ba59-59ebd32816f4',
@@ -468,6 +487,7 @@ export const certifications: CertificationItem[] = [
     category: 'ai',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198721489',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/ddb9959c-0b16-4db6-b999-687e9fd9b54e',
@@ -479,6 +499,7 @@ export const certifications: CertificationItem[] = [
     category: 'ai',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198721664',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/49cca318-55eb-4cfe-b835-6f5de69c7581',
@@ -490,6 +511,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198296203',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/7b505fd0-17f0-485d-80de-4ac371342196',
@@ -501,6 +523,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198220773',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/8af7b84e-dfcd-4ac5-8383-e30b05660d51',
@@ -512,6 +535,7 @@ export const certifications: CertificationItem[] = [
     category: 'data',
     tier: 'partner',
     badgeLabel: 'Delivery Expert',
+    badgeImageUrl: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/198228651',
     issuedAt: { pt: 'Out 2026', en: 'Oct 2026' },
     expiresAt: { pt: 'Out 2028', en: 'Oct 2028' },
     credentialUrl: 'https://credentials.databricks.com/e9e219e1-e1cd-4212-91cb-439ec8c6b0b4',
@@ -756,6 +780,7 @@ export const uiLabels = {
     academicHeading: { pt: 'Formação Acadêmica', en: 'Academic Background' },
     certsHeading: { pt: 'Cursos & Certificações', en: 'Courses & Certifications' },
     verifyCredential: { pt: 'Verificar', en: 'Verify' },
+    viewCertificate: { pt: 'Certificado', en: 'Certificate' },
     databricksWallet: { pt: 'Carteira Databricks', en: 'Databricks Wallet' },
     showBadges: { pt: 'Ver badges Databricks', en: 'View Databricks badges' },
     hideBadges: { pt: 'Ocultar badges Databricks', en: 'Hide Databricks badges' },
