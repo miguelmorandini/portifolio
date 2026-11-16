@@ -75,24 +75,24 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
               return (
                 <div
                   key={cert.id}
-                  className={`flex items-start gap-4 rounded-2xl border p-5 transition ${
+                  className={`flex items-center gap-4 rounded-2xl border p-5 transition ${
                     cert.featured
                       ? 'border-emerald-500/50 bg-emerald-950/25 shadow-lg shadow-emerald-950/30 hover:border-emerald-400/75'
                       : 'border-zinc-800/90 bg-[#0a120f] hover:border-emerald-500/35'
                   }`}
                 >
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-zinc-800/80 bg-zinc-950/70 p-1.5">
-                    {cert.badgeImageUrl ? (
-                      <img
-                        src={cert.badgeImageUrl}
-                        alt={cert.title}
-                        loading="lazy"
-                        className="h-full w-full object-contain"
-                      />
-                    ) : (
+                  {cert.badgeImageUrl ? (
+                    <img
+                      src={cert.badgeImageUrl}
+                      alt={cert.title}
+                      loading="lazy"
+                      className="h-20 w-20 shrink-0 object-contain drop-shadow-[0_6px_14px_rgba(0,0,0,0.55)] sm:h-24 sm:w-24"
+                    />
+                  ) : (
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10">
                       <Award className="h-7 w-7 text-emerald-300" />
-                    )}
-                  </div>
+                    </div>
+                  )}
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center justify-between gap-2">
@@ -202,7 +202,7 @@ export function EducationAndCerts({ lang }: EducationAndCertsProps) {
                                   src={badge.badgeImageUrl}
                                   alt={badge.title}
                                   loading="lazy"
-                                  className="h-10 w-10 shrink-0 object-contain"
+                                  className="h-12 w-12 shrink-0 object-contain drop-shadow-[0_3px_8px_rgba(0,0,0,0.45)]"
                                 />
                               )}
                               <div className="min-w-0 flex-1">
