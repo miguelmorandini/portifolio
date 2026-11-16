@@ -1,10 +1,9 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import {
   ArrowRight,
   Database,
   ExternalLink,
   Github,
-
   Linkedin,
   MapPin,
   Sparkles,
@@ -135,20 +134,21 @@ export function Hero({ lang }: HeroProps) {
                   href={profile.companyUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between rounded-xl border border-zinc-800/90 bg-zinc-900/50 px-4 py-3 transition hover:border-emerald-500/35"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-zinc-800/90 bg-zinc-900/50 px-4 py-3 transition hover:border-emerald-500/35"
                 >
-                  <div>
+                  <img src={profile.companyLogo} alt={profile.company} className="h-10 w-10 shrink-0 rounded-xl bg-white p-1.5 object-contain" />
+                  <div className="min-w-0 flex-1">
                     <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-400">
-                      {lang === 'pt' ? 'AtuaÃ§Ã£o Atual' : 'Current Role'}
+                      {lang === 'pt' ? 'Atuação Atual' : 'Current Role'}
                     </p>
                     <p className="mt-0.5 text-sm font-semibold text-zinc-100">{profile.company}</p>
                   </div>
-                  <ExternalLink className="h-4 w-4 text-emerald-400" />
+                  <ExternalLink className="h-4 w-4 shrink-0 text-emerald-400" />
                 </a>
 
                 <div className="flex items-center gap-3 rounded-xl border border-zinc-800/90 bg-zinc-900/50 px-4 py-3">
                   <div className="flex h-10 w-14 shrink-0 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950/70 px-2 py-1.5">
-                    <img src={profile.institutionLogo} alt="Fatec MatÃ£o" className="h-full w-full object-contain" />
+                    <img src={profile.institutionLogo} alt="Fatec Matão" className="h-full w-full object-contain" />
                   </div>
                   <div>
                     <p className="font-mono text-[11px] uppercase tracking-wider text-zinc-400">
