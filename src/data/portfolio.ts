@@ -1,4 +1,4 @@
-import fatecLogo from '../assets/logos/fatec-white.png';
+import fatecLogo from '../assets/logos/fatec.png';
 import programmersLogo from '../assets/logos/programmers.png';
 import spsLogo from '../assets/logos/sps.png';
 import cidadeIntegraLogo from '../assets/logos/cidade-integra.png';
@@ -265,7 +265,7 @@ export const experiences: ExperienceItem[] = [
     },
     company: 'Fatec Matão',
     logo: fatecLogo,
-    logoStyle: 'dark',
+    logoStyle: 'light',
     type: {
       pt: 'Monitoria / Estágio',
       en: 'Internship',
@@ -308,7 +308,7 @@ export const education: EducationItem[] = [
     id: 'fatec',
     institution: 'Fatec Matão — Faculdade de Tecnologia de São Paulo',
     logo: fatecLogo,
-    logoStyle: 'dark',
+    logoStyle: 'light',
     degree: {
       pt: 'Tecnólogo em Desenvolvimento de Software Multiplataforma',
       en: 'Associate Degree in Multiplatform Software Development',
@@ -372,7 +372,7 @@ export const projects: ProjectItem[] = [
     id: 'cidade-integra',
     title: 'Cidade Integra',
     logo: cidadeIntegraLogo,
-    logoStyle: 'dark',
+    logoStyle: 'raw',
     subtitle: {
       pt: 'Plataforma Cívica de Zeladoria Urbana • Fatec Matão',
       en: 'Civic Urban Reporting Platform • Fatec Matão',

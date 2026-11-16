@@ -147,7 +147,7 @@ export function Hero({ lang }: HeroProps) {
                 </a>
 
                 <div className="flex items-center gap-3 rounded-xl border border-zinc-800/90 bg-zinc-900/50 px-4 py-3">
-                  <div className="flex h-10 w-14 shrink-0 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-950/70 px-2 py-1.5">
+                  <div className="flex h-10 w-14 shrink-0 items-center justify-center rounded-xl bg-white px-2 py-1.5 shadow-sm">
                     <img src={profile.institutionLogo} alt="Fatec Matão" className="h-full w-full object-contain" />
                   </div>
                   <div>
